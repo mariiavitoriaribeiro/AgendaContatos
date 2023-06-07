@@ -14,4 +14,5 @@ use App\Http\Controllers\ControllerAgenda;
 |
 */
 
-Route::get('/',[ControllerAgenda::class,'MostrarContato'])->name('contatos');
+Route::get('/',[controllerAgenda::class,'MostrarContato'])->name('contatos');
+Route::post('/cadastro-agenda',[controllerAgenda::class, 'cadastrarAgenda'])->name('cadastro-agenda');

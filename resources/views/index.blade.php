@@ -24,7 +24,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Cadastrar</a></li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalagendaCadastrar">Cadastrar</button>
+                            @include('modal.agendaCadastrar')
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -40,84 +43,37 @@
                 </div>
             </div>
             <!-- Content Row-->
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Silvio Florentino</h2>
-                            <p class="card-text">
-                                <p>Fone: 9393939393</p>
-                                <p>E-mail: silvioflorentio@yahoo.ocm.br</p>
-                            </p>
-                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Silvio Florentino</h2>
-                            <p class="card-text">
-                                <p>Fone: 9393939393</p>
-                                <p>E-mail: silvioflorentio@yahoo.ocm.br</p>
-                            </p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Silvio Florentino</h2>
-                            <p class="card-text">
-                                <p>Fone: 9393939393</p>
-                                <p>E-mail: silvioflorentio@yahoo.ocm.br</p>
-                            </p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="row gx-4 gx-lg-5">
+            @foreach($dadosagenda as $dadoagenda)
+          @if(empty($dadoagenda))
+
+          @else
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">Silvio Florentino</h2>
+                            <h2 class="card-title">{{$dadoagenda->nome}}</h2>
                             <p class="card-text">
-                                <p>Fone: 9393939393</p>
-                                <p>E-mail: silvioflorentio@yahoo.ocm.br</p>
+                                <p>{{$dadoagenda->telefone}}</p>
+                                <p>{{$dadoagenda->email}}</p>
                             </p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                         </div>
+                        <div class="card-footer">
+                            
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modaInfo-{{$dadoagenda->id}}">Mais Informações</button>
+                        @include('modal.modaInfo')
+                    </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Silvio Florentino</h2>
-                            <p class="card-text">
-                                <p>Fone: 9393939393</p>
-                                <p>E-mail: silvioflorentio@yahoo.ocm.br</p>
-                            </p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Silvio Florentino</h2>
-                            <p class="card-text">
-                                <p>Fone: 9393939393</p>
-                                <p>E-mail: silvioflorentio@yahoo.ocm.br</p>
-                            </p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                    </div>
-                </div>
+                @endif
+        @endforeach
             </div>
+
         </div>
+
+  
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
